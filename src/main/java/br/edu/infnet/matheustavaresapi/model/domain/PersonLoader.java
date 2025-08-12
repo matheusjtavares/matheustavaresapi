@@ -7,7 +7,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PlayerLoader implements ApplicationRunner{
+public class PersonLoader implements ApplicationRunner{
     @Override
     public void run(ApplicationArguments args) throws Exception {
         FileReader file  = new FileReader("player.txt");
@@ -18,7 +18,7 @@ public class PlayerLoader implements ApplicationRunner{
 
         while (line!=null){
             fields = line.split(";");
-            Player player = new Player();
+            Person player = new Person();
             player.name = fields[0];
             player.isActive = Boolean.parseBoolean(fields[1]);
             player.age = Integer.parseInt(fields[2]);

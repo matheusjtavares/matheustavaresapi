@@ -1,6 +1,6 @@
 package br.edu.infnet.matheustavaresapi.model.domain;
 
-public class Player {
+public class Person {
     public String name; //default null
     public int age;//default 0
     public double activity; //default 0.0

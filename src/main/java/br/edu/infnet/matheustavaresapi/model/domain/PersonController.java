@@ -6,20 +6,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-public class PlayerController {
-    @GetMapping("api/player/name")
+public class PersonController {
+    @GetMapping("api/person/name")
     public String getName() {
         return "Matheus";
     }
-    @GetMapping("api/player/age")
+    @GetMapping("api/person/age")
     public int getAge() {
         return 29;
     }
-    @GetMapping("api/player/activity")
+    @GetMapping("api/person/activity")
     public double getActivity() {
         return 2500.00;
     }
-    @GetMapping("api/player/status")
+    @GetMapping("api/person/status")
     public boolean getStatus() {
         return false;
     }
