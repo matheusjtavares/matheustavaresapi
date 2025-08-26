@@ -1,6 +1,7 @@
 package br.edu.infnet.matheustavaresapi.model.domain;
 
 public class Player extends Person {
+    private Integer id;
 
     private Library library;
     private String tier;
@@ -44,5 +45,13 @@ public class Player extends Person {
 
     public void setFavouriteGame(GameTitle favouriteGame) {
         this.favouriteGame = favouriteGame;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

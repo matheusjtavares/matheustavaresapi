@@ -5,7 +5,7 @@ import java.util.List;
 public interface CrudService<T,ID> {
 
     T save(T entity);
-    T get();
+    T get(ID id);
     void delete(ID id);
     List<T> getList();
 }

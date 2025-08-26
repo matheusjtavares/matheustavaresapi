@@ -7,9 +7,17 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.matheustavaresapi.model.domain.Player;
+import br.edu.infnet.matheustavaresapi.model.service.PlayerService;
 
 @Component
 public class PlayerLoader implements ApplicationRunner{
+    
+    private final PlayerService playerService;
+
+    public PlayerLoader(PlayerService playerService) {
+        this.playerService = playerService;
+    }
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
         FileReader file  = new FileReader("players.txt");
@@ -28,9 +36,11 @@ public class PlayerLoader implements ApplicationRunner{
             player.setEmail(fields[4]);
             player.setCountry(fields[5]);
             System.out.println(player);
+            playerService.save(player);
             line = reader.readLine();
 
         }
+        System.out.println("-" + playerService.getList().size());
 
         reader.close();
 
