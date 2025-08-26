@@ -21,12 +21,12 @@ public class PlayerLoader implements ApplicationRunner{
         while (line!=null){
             fields = line.split(";");
             Player player = new Player();
-            player.userID = Integer.parseInt(fields[0]);
-            player.name = fields[1];
-            player.age = Integer.parseInt(fields[2]);
-            player.isActive = Boolean.parseBoolean(fields[3]);
-            player.email = fields[4];
-            player.country = fields[5];
+            player.setUserID(Integer.parseInt(fields[0]));
+            player.setName(fields[1]);
+            player.setAge(Integer.parseInt(fields[2]));
+            player.setIsActive(Boolean.parseBoolean(fields[3]));
+            player.setEmail(fields[4]);
+            player.setCountry(fields[5]);
             System.out.println(player);
             line = reader.readLine();
 
