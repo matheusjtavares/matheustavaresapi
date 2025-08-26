@@ -1,0 +1,18 @@
+PlayStation;Sony;1994-12-03;299.99;false
+PlayStation 2;Sony;2000-03-04;299.99;false
+PlayStation 3;Sony;2006-11-11;499.99;false
+PlayStation 4;Sony;2013-11-15;399.99;false
+PlayStation 5;Sony;2020-11-12;499.99;false
+Xbox;Microsoft;2001-11-15;299.99;false
+Xbox 360;Microsoft;2005-11-22;299.99;false
+Xbox One;Microsoft;2013-11-22;499.99;false
+Xbox Series X;Microsoft;2020-11-10;499.99;false
+Nintendo 64;Nintendo;1996-06-23;199.99;false
+GameCube;Nintendo;2001-09-14;199.99;false
+Wii;Nintendo;2006-11-19;249.99;false
+Wii U;Nintendo;2012-11-18;299.99;false
+Nintendo Switch;Nintendo;2017-03-03;299.99;true
+Sega Genesis;Sega;1988-10-29;189.99;false
+Game Boy;Nintendo;1989-04-21;89.99;true
+PlayStation Portable;Sony;2004-12-12;249.99;true
+Nintendo DS;Nintendo;2004-11-21;149.99;true

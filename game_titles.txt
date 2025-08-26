@@ -1,0 +1,91 @@
+Final Fantasy VII;Square Enix;PlayStation;1997-01-31;1.0
+Metal Gear Solid;Konami;PlayStation;1998-09-03;1.0
+Gran Turismo;Sony Computer Entertainment;PlayStation;1997-12-23;1.0
+Crash Bandicoot;Sony Computer Entertainment;PlayStation;1996-09-09;1.0
+Tekken 3;Namco;PlayStation;1998-03-20;1.0
+Shadow of the Colossus;Sony Computer Entertainment;PlayStation 2;2005-10-18;1.0
+God of War II;Sony Computer Entertainment;PlayStation 2;2007-03-13;1.0
+Grand Theft Auto: San Andreas;Rockstar Games;PlayStation 2;2004-10-26;1.0
+Kingdom Hearts;Square Enix;PlayStation 2;2002-03-28;1.0
+Okami;Capcom;PlayStation 2;2006-04-20;1.0
+Uncharted: Drake's Fortune;Sony Computer Entertainment;PlayStation 3;2007-11-19;1.0
+The Last of Us;Sony Computer Entertainment;PlayStation 3;2013-06-14;1.0
+LittleBigPlanet;Sony Computer Entertainment;PlayStation 3;2008-10-27;1.0
+Demon's Souls;Atlus;PlayStation 3;2009-02-05;1.0
+Killzone 2;Sony Computer Entertainment;PlayStation 3;2009-02-27;1.0
+Bloodborne;Sony Computer Entertainment;PlayStation 4;2015-03-24;1.0
+Horizon Zero Dawn;Sony Computer Entertainment;PlayStation 4;2017-02-28;1.0
+Marvel's Spider-Man;Sony Interactive Entertainment;PlayStation 4;2018-09-07;1.0
+God of War;Sony Interactive Entertainment;PlayStation 4;2018-04-20;1.0
+The Last of Us Part II;Sony Interactive Entertainment;PlayStation 4;2020-06-19;1.0
+Demon's Souls Remake;Sony Interactive Entertainment;PlayStation 5;2020-11-12;1.0
+Ratchet & Clank: Rift Apart;Sony Interactive Entertainment;PlayStation 5;2021-06-11;1.0
+Returnal;Sony Interactive Entertainment;PlayStation 5;2021-04-30;1.0
+Horizon Forbidden West;Sony Interactive Entertainment;PlayStation 5;2022-02-18;1.0
+Final Fantasy XVI;Square Enix;PlayStation 5;2023-06-22;1.0
+Halo: Combat Evolved;Microsoft;Xbox;2001-11-15;1.0
+Fable;Microsoft;Xbox;2004-09-14;1.0
+Ninja Gaiden Black;Tecmo;Xbox;2005-09-20;1.0
+Project Gotham Racing;Microsoft;Xbox;2001-11-15;1.0
+Star Wars: Knights of the Old Republic;LucasArts;Xbox;2003-07-16;1.0
+Gears of War;Microsoft;Xbox 360;2006-11-07;1.0
+Halo 3;Microsoft;Xbox 360;2007-09-25;1.0
+Forza Motorsport 2;Microsoft;Xbox 360;2007-05-29;1.0
+Mass Effect;Electronic Arts;Xbox 360;2007-11-20;1.0
+Red Dead Redemption;Rockstar Games;Xbox 360;2010-05-18;1.0
+Forza Motorsport 5;Microsoft;Xbox One;2013-11-22;1.0
+Halo 5: Guardians;Microsoft;Xbox One;2015-10-27;1.0
+Gears 5;Microsoft;Xbox One;2019-09-10;1.0
+Sea of Thieves;Microsoft;Xbox One;2018-03-20;1.0
+Ori and the Blind Forest;Microsoft;Xbox One;2015-03-11;1.0
+Halo Infinite;Microsoft;Xbox Series X;2021-12-08;1.0
+Forza Horizon 5;Microsoft;Xbox Series X;2021-11-09;1.0
+Starfield;Bethesda;Xbox Series X;2023-09-06;1.0
+Hellblade II;Ninja Theory;Xbox Series X;2024-05-21;1.0
+Avowed;Obsidian Entertainment;Xbox Series X;2024-11-12;1.0
+Super Mario 64;Nintendo;Nintendo 64;1996-06-23;1.0
+The Legend of Zelda: Ocarina of Time;Nintendo;Nintendo 64;1998-11-21;1.0
+GoldenEye 007;Rare;Nintendo 64;1997-08-25;1.0
+Mario Kart 64;Nintendo;Nintendo 64;1996-12-14;1.0
+Banjo-Kazooie;Rare;Nintendo 64;1998-06-29;1.0
+Super Smash Bros. Melee;Nintendo;GameCube;2001-11-21;1.0
+Metroid Prime;Nintendo;GameCube;2002-11-17;1.0
+Resident Evil 4;Capcom;GameCube;2005-01-11;1.0
+The Legend of Zelda: The Wind Waker;Nintendo;GameCube;2002-12-13;1.0
+Luigi's Mansion;Nintendo;GameCube;2001-09-14;1.0
+The Legend of Zelda: Twilight Princess;Nintendo;Wii;2006-11-19;1.0
+Super Mario Galaxy;Nintendo;Wii;2007-11-01;1.0
+Wii Sports;Nintendo;Wii;2006-11-19;1.0
+Mario Kart Wii;Nintendo;Wii;2008-04-10;1.0
+Donkey Kong Country Returns;Nintendo;Wii;2010-11-21;1.0
+Super Mario 3D World;Nintendo;Wii U;2013-11-21;1.0
+Splatoon;Nintendo;Wii U;2015-05-28;1.0
+Mario Kart 8;Nintendo;Wii U;2014-05-29;1.0
+Bayonetta 2;Nintendo;Wii U;2014-09-20;1.0
+The Legend of Zelda: Breath of the Wild;Nintendo;Wii U;2017-03-03;1.0
+The Legend of Zelda: Breath of the Wild;Nintendo;Nintendo Switch;2017-03-03;1.0
+Super Mario Odyssey;Nintendo;Nintendo Switch;2017-10-27;1.0
+Mario Kart 8 Deluxe;Nintendo;Nintendo Switch;2017-04-28;1.0
+Animal Crossing: New Horizons;Nintendo;Nintendo Switch;2020-03-20;1.0
+Pokémon Scarlet;Nintendo;Nintendo Switch;2022-11-18;1.0
+Pokémon Violet;Nintendo;Nintendo Switch;2022-11-18;1.0
+Sonic the Hedgehog;Sega;Sega Genesis;1991-06-23;1.0
+Streets of Rage;Sega;Sega Genesis;1991-08-02;1.0
+Golden Axe;Sega;Sega Genesis;1989-11-30;1.0
+Altered Beast;Sega;Sega Genesis;1988-11-27;1.0
+Shining Force;Sega;Sega Genesis;1992-03-20;1.0
+Tetris;Nintendo;Game Boy;1989-06-14;1.0
+Pokémon Red;Nintendo;Game Boy;1996-02-27;1.0
+Pokémon Blue;Nintendo;Game Boy;1996-02-27;1.0
+The Legend of Zelda: Link’s Awakening;Nintendo;Game Boy;1993-06-06;1.0
+Kirby’s Dream Land;Nintendo;Game Boy;1992-04-27;1.0
+Monster Hunter Freedom;Capcom;PlayStation Portable;2005-12-01;1.0
+Crisis Core: Final Fantasy VII;Square Enix;PlayStation Portable;2007-09-13;1.0
+God of War: Chains of Olympus;Sony Computer Entertainment;PlayStation Portable;2008-03-04;1.0
+Daxter;Sony Computer Entertainment;PlayStation Portable;2006-03-14;1.0
+Gran Turismo PSP;Sony Computer Entertainment;PlayStation Portable;2009-10-01;1.0
+New Super Mario Bros.;Nintendo;Nintendo DS;2006-05-15;1.0
+Mario Kart DS;Nintendo;Nintendo DS;2005-11-14;1.0
+Pokémon Diamond;Nintendo;Nintendo DS;2006-09-28;1.0
+Pokémon Pearl;Nintendo;Nintendo DS;2006-09-28;1.0
+The Legend of Zelda: Phantom Hourglass;Nintendo;Nintendo DS;2007-06-23;1.0

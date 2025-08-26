@@ -1,16 +1,18 @@
 package br.edu.infnet.matheustavaresapi.model.domain;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.time.LocalDate;
 
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PersonLoader implements ApplicationRunner{
+public class PlatformLoader implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        FileReader file  = new FileReader("persons.txt");
+        FileReader file  = new FileReader("platforms.txt");
         BufferedReader reader = new BufferedReader(file);
 
         String line = reader.readLine();
@@ -18,16 +20,14 @@ public class PersonLoader implements ApplicationRunner{
 
         while (line!=null){
             fields = line.split(";");
-            Person person = new Person();
-            person.userID = Integer.parseInt(fields[0]);
-            person.name = fields[1];
-            person.age = Integer.parseInt(fields[2]);
-            person.isActive = Boolean.parseBoolean(fields[3]);
-            person.email = fields[4];
-            person.country = fields[5];
-            System.out.println(person);
+            Platform platform = new Platform();
+            platform.name = fields[0];
+            platform.manufacturer = fields[1];
+            platform.releaseDate = LocalDate.parse(fields[2]);
+            platform.price = Float.parseFloat(fields[3]);
+            platform.isHandheld = Boolean.parseBoolean(fields[4]);
+            System.out.println(platform);
             line = reader.readLine();
-
         }
 
         reader.close();
