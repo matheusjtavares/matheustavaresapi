@@ -1,4 +1,4 @@
-package br.edu.infnet.matheustavaresapi.model.domain;
+package br.edu.infnet.matheustavaresapi.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-public class PersonController {
+public class PlayerController {
     @GetMapping("api/person/name")
     public String getName() {
         return "Matheus";

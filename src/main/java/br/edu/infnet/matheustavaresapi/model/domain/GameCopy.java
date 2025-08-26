@@ -7,7 +7,7 @@ public class GameCopy {
     public GameTitle title;
     public Platform platform;
     public Date ownedSince;
-    public Person onwnerPerson;
+    public Player onwnerPlayer;
     public Boolean availableForRental;
     public BigDecimal rentalDailyFee;
 }

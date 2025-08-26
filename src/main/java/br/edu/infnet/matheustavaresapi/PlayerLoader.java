@@ -1,4 +1,4 @@
-package br.edu.infnet.matheustavaresapi.model.domain;
+package br.edu.infnet.matheustavaresapi;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
@@ -6,11 +6,13 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import br.edu.infnet.matheustavaresapi.model.domain.Player;
+
 @Component
-public class PersonLoader implements ApplicationRunner{
+public class PlayerLoader implements ApplicationRunner{
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        FileReader file  = new FileReader("persons.txt");
+        FileReader file  = new FileReader("players.txt");
         BufferedReader reader = new BufferedReader(file);
 
         String line = reader.readLine();
@@ -18,14 +20,14 @@ public class PersonLoader implements ApplicationRunner{
 
         while (line!=null){
             fields = line.split(";");
-            Person person = new Person();
-            person.userID = Integer.parseInt(fields[0]);
-            person.name = fields[1];
-            person.age = Integer.parseInt(fields[2]);
-            person.isActive = Boolean.parseBoolean(fields[3]);
-            person.email = fields[4];
-            person.country = fields[5];
-            System.out.println(person);
+            Player player = new Player();
+            player.userID = Integer.parseInt(fields[0]);
+            player.name = fields[1];
+            player.age = Integer.parseInt(fields[2]);
+            player.isActive = Boolean.parseBoolean(fields[3]);
+            player.email = fields[4];
+            player.country = fields[5];
+            System.out.println(player);
             line = reader.readLine();
 
         }

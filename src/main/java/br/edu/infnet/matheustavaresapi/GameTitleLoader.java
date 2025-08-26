@@ -1,4 +1,4 @@
-package br.edu.infnet.matheustavaresapi.model.domain;
+package br.edu.infnet.matheustavaresapi;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.time.LocalDate;
@@ -6,6 +6,8 @@ import java.time.LocalDate;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
+
+import br.edu.infnet.matheustavaresapi.model.domain.GameTitle;
 
 @Component
 public class GameTitleLoader implements ApplicationRunner{

@@ -1,4 +1,4 @@
-package br.edu.infnet.matheustavaresapi.model.domain;
+package br.edu.infnet.matheustavaresapi;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -7,6 +7,8 @@ import java.time.LocalDate;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
+
+import br.edu.infnet.matheustavaresapi.model.domain.Platform;
 
 @Component
 public class PlatformLoader implements ApplicationRunner {
@@ -24,7 +26,7 @@ public class PlatformLoader implements ApplicationRunner {
             platform.name = fields[0];
             platform.manufacturer = fields[1];
             platform.releaseDate = LocalDate.parse(fields[2]);
-            platform.price = Float.parseFloat(fields[3]);
+            platform.price = Double.parseDouble(fields[3]);
             platform.isHandheld = Boolean.parseBoolean(fields[4]);
             System.out.println(platform);
             line = reader.readLine();

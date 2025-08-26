@@ -1,12 +1,13 @@
 package br.edu.infnet.matheustavaresapi.model.domain;
 
-public class Person {
+public class Player {
     public int userID;
     public String name; //default null
     public int age;//default 0
     public boolean isActive;//default false
     public String email;
     public String country;
+    
 
     @Override
     public String toString() {

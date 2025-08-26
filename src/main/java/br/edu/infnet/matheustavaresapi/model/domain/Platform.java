@@ -6,7 +6,7 @@ public class Platform {
     public String name;
     public String manufacturer;
     public LocalDate releaseDate;
-    public float price;
+    public double price;
     public boolean isHandheld;
 
     @Override
