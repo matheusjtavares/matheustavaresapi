@@ -3,17 +3,76 @@ package br.edu.infnet.matheustavaresapi.model.domain;
 import java.time.LocalDate;
 
 public class GameTitle {
-    public String name;
-    public String publisher;
-    public String platform;
-    public LocalDate releaseDate;
-    public float version;
+    private int id;
+    private String name;
+    private String publisher;
+    private String platform;
+    private LocalDate releaseDate;
+    private float version;
 
 
     @Override
     public String toString() {
         String formatString = " Title: %s%n Publisher: %s%n Platform: %s%n Release Date: %s%n Version: % .1f" ;
         return String.format(formatString, name,publisher,platform,releaseDate,version);
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+
+    public String getPlatform() {
+        return platform;
+    }
+
+
+    public void setPlatform(String platform) {
+        this.platform = platform;
+    }
+
+
+    public LocalDate getReleaseDate() {
+        return releaseDate;
+    }
+
+
+    public void setReleaseDate(LocalDate releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+
+    public float getVersion() {
+        return version;
+    }
+
+
+    public void setVersion(float version) {
+        this.version = version;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
 

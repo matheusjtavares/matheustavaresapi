@@ -9,9 +9,14 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.matheustavaresapi.model.domain.Platform;
+import br.edu.infnet.matheustavaresapi.model.service.PlatformService;
 
 @Component
 public class PlatformLoader implements ApplicationRunner {
+    private final PlatformService platformService;
+    public PlatformLoader(PlatformService platformService){
+        this.platformService = platformService;
+    }
     @Override
     public void run(ApplicationArguments args) throws Exception {
         FileReader file  = new FileReader("platforms.txt");
@@ -23,12 +28,13 @@ public class PlatformLoader implements ApplicationRunner {
         while (line!=null){
             fields = line.split(";");
             Platform platform = new Platform();
-            platform.name = fields[0];
-            platform.manufacturer = fields[1];
-            platform.releaseDate = LocalDate.parse(fields[2]);
-            platform.price = Double.parseDouble(fields[3]);
-            platform.isHandheld = Boolean.parseBoolean(fields[4]);
+            platform.setName(fields[0]);
+            platform.setManufacturer(fields[1]);
+            platform.setReleaseDate(LocalDate.parse(fields[2]));
+            platform.setPrice(Double.parseDouble(fields[3]));
+            platform.setHandheld(Boolean.parseBoolean(fields[4]));
             System.out.println(platform);
+            platformService.save(platform);
             line = reader.readLine();
         }
 

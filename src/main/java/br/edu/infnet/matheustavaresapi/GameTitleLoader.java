@@ -8,9 +8,16 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.matheustavaresapi.model.domain.GameTitle;
+import br.edu.infnet.matheustavaresapi.model.service.GameTitleService;
 
 @Component
 public class GameTitleLoader implements ApplicationRunner{
+
+    private final GameTitleService gameTitleService;
+
+    public GameTitleLoader(GameTitleService gameTitleService){
+        this.gameTitleService = gameTitleService;
+    }
     @Override
     public void run(ApplicationArguments args) throws Exception {
         FileReader file  = new FileReader("game_titles.txt");
@@ -22,12 +29,13 @@ public class GameTitleLoader implements ApplicationRunner{
         while (line!=null){
             fields = line.split(";");
             GameTitle gameTitle = new GameTitle();
-            gameTitle.name = fields[0];
-            gameTitle.publisher = fields[1];
-            gameTitle.platform = fields[2];
-            gameTitle.releaseDate = LocalDate.parse(fields[3]);
-            gameTitle.version = Float.parseFloat(fields[4]);
+            gameTitle.setName(fields[0]);
+            gameTitle.setPublisher(fields[2]);
+            gameTitle.setPlatform(fields[3]);
+            gameTitle.setReleaseDate(LocalDate.parse(fields[3]));
+            gameTitle.setVersion(Float.parseFloat(fields[4]));
             System.out.println(gameTitle);
+            gameTitleService.save(gameTitle);
             line = reader.readLine();
 
         }
