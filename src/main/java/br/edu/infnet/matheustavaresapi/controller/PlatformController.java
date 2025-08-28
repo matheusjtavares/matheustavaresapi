@@ -28,6 +28,6 @@ public class PlatformController {
 
     @GetMapping("/{id}")
     public Platform getGameTitle(@PathVariable int id) {
-        return platformService.get(id);
+        return platformService.getById(id);
     }
 }

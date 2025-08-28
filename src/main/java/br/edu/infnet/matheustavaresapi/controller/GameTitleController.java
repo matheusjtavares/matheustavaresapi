@@ -26,6 +26,6 @@ public class GameTitleController {
 
     @GetMapping("/{id}")
     public GameTitle getGameTitle(@PathVariable int id) {
-        return gameTitleService.get(id);
+        return gameTitleService.getById(id);
     }
 }

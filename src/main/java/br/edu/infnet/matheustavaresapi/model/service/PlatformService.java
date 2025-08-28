@@ -21,7 +21,7 @@ public class PlatformService implements CrudService<Platform,Integer>{
         
     }
     @Override
-    public Platform get(Integer id) {
+    public Platform getById(Integer id) {
         // TODO Auto-generated method stub
         return map.get(id);
     }

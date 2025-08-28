@@ -22,7 +22,7 @@ public class GameTitleService implements CrudService<GameTitle, Integer> {
     }
 
     @Override
-    public GameTitle get(Integer id) {
+    public GameTitle getById(Integer id) {
         // TODO Auto-generated method stub
         return map.get(id);
 

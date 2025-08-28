@@ -9,6 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.matheustavaresapi.model.domain.Player;
+import br.edu.infnet.matheustavaresapi.model.domain.exceptions.PlayerInvalidException;
 
 @Service
 public class PlayerService implements CrudService<Player, Integer> {
@@ -19,12 +20,21 @@ public class PlayerService implements CrudService<Player, Integer> {
     @Override
     public void delete(Integer id) {
         // TODO Auto-generated method stub
+        Player player = map.get(id);
+        if (player.getName() == null){
+            throw new PlayerInvalidException("The selected player is not valid");
+        }
+        map.remove(id);
     }
 
     @Override
-    public Player get(Integer Id) {
+    public Player getById(Integer id) {
         // TODO Auto-generated method stub
-        return map.get(Id);
+        Player player = map.get(id);
+        if (player.getName() == null){
+            throw new IllegalArgumentException("Cannot find a Player with the given id;");
+        }
+        return player;
     }
 
     @Override
@@ -36,6 +46,9 @@ public class PlayerService implements CrudService<Player, Integer> {
     @Override
     public Player save(Player player) {
         // TODO Auto-generated method stub
+        if (player.getName() == null){
+            throw new PlayerInvalidException("The selected player is not valid");
+        }
         player.setId(nextId.getAndIncrement());
         map.put(player.getId(),player);
 

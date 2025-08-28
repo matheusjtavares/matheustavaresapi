@@ -24,13 +24,13 @@ public class PlayerController {
     }
 
     @GetMapping("/all")
-    public List<Player> getPlayers() {
+    public List<Player> getList() {
         return playerService.getList();
     }
 
     @GetMapping("/{id}")
     public Player getPlayer(@PathVariable int id) {
-        return playerService.get(id);
+        return playerService.getById(id);
     }
     
     
