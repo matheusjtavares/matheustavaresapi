@@ -29,7 +29,7 @@ public class PlayerLoader implements ApplicationRunner{
         while (line!=null){
             fields = line.split(";");
             Player player = new Player();
-            player.setUserID(Integer.parseInt(fields[0]));
+            player.setId(Integer.parseInt(fields[0]));
             player.setName(fields[1]);
             player.setAge(Integer.parseInt(fields[2]));
             player.setIsActive(Boolean.parseBoolean(fields[3]));
