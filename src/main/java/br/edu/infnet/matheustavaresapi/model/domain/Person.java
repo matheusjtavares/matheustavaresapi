@@ -2,7 +2,7 @@ package br.edu.infnet.matheustavaresapi.model.domain;
 
 public abstract class Person {
 
-    private int id;
+    private Integer id;
     private String name;
     private int age;
     private String String;
@@ -75,7 +75,7 @@ public abstract class Person {
         this.isActive = isActive;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

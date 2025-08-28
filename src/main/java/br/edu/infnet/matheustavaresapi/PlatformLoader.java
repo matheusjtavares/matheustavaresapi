@@ -34,7 +34,7 @@ public class PlatformLoader implements ApplicationRunner {
             platform.setPrice(Double.parseDouble(fields[3]));
             platform.setHandheld(Boolean.parseBoolean(fields[4]));
             System.out.println(platform);
-            platformService.save(platform);
+            platformService.include(platform);
             line = reader.readLine();
         }
 

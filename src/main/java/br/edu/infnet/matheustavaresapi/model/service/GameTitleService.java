@@ -29,6 +29,12 @@ public class GameTitleService implements CrudService<GameTitle, Integer> {
     }
 
     @Override
+    public GameTitle alter(Integer id, GameTitle gameTitle) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
     public List<GameTitle> getList() {
         // TODO Auto-generated method stub
         return new ArrayList<>(map.values());
@@ -36,7 +42,7 @@ public class GameTitleService implements CrudService<GameTitle, Integer> {
     }
 
     @Override
-    public GameTitle save(GameTitle gameTitle) {
+    public GameTitle include(GameTitle gameTitle) {
         // TODO Auto-generated method stub
         gameTitle.setId(nextId.getAndIncrement());
         map.put(gameTitle.getId(),gameTitle);

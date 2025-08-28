@@ -31,8 +31,14 @@ public class PlatformService implements CrudService<Platform,Integer>{
         return new ArrayList<>(map.values());
 
     }
+    
     @Override
-    public Platform save(Platform platform) {
+    public Platform alter(Integer id, Platform platform) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    @Override
+    public Platform include(Platform platform) {
         // TODO Auto-generated method stub
         platform.setId(nextId.getAndIncrement());
         map.put(platform.getId(),platform);
