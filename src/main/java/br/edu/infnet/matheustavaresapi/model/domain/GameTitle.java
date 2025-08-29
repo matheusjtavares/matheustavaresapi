@@ -3,12 +3,13 @@ package br.edu.infnet.matheustavaresapi.model.domain;
 import java.time.LocalDate;
 
 public class GameTitle {
-    private int id;
+    private Integer id;
     private String name;
     private String publisher;
     private String platform;
     private LocalDate releaseDate;
     private float version;
+    private Boolean isActive;
 
 
     @Override
@@ -67,12 +68,20 @@ public class GameTitle {
         this.version = version;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
     }
 }
 

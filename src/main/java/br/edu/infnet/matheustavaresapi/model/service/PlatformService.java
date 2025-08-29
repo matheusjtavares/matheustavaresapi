@@ -9,8 +9,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.matheustavaresapi.model.domain.Platform;
-import br.edu.infnet.matheustavaresapi.model.domain.exceptions.PlatformNotFoundException;
 import br.edu.infnet.matheustavaresapi.model.domain.exceptions.PlatformInvalidException;
+import br.edu.infnet.matheustavaresapi.model.domain.exceptions.PlatformNotFoundException;
 
 @Service
 public class PlatformService implements CrudService<Platform,Integer>{
@@ -26,20 +26,26 @@ public class PlatformService implements CrudService<Platform,Integer>{
             throw new PlatformInvalidException("Platform name is mandatory");
         }
     }
+    private void validateId(Integer id){
+        if (id==null || id==0){
+            throw new IllegalArgumentException("The id cannot be null or 0");
+        }
+        if (!map.containsKey(id)){
+            throw new PlatformNotFoundException("The id " + id + "was not found");
+        }
+    }
     @Override
     public void delete(Integer id) {
         // TODO Auto-generated method stub
-        Platform platform = map.get(id);
-        validate(platform);
+        validateId(id);
         map.remove(id);
-        
     }
     @Override
     public Platform getById(Integer id) {
         // TODO Auto-generated method stub
         Platform platform = map.get(id);
         validate(platform);
-        return map.get(id);
+        return platform;
     }
     @Override
     public List<Platform> getList() {
@@ -51,12 +57,7 @@ public class PlatformService implements CrudService<Platform,Integer>{
     @Override
     public Platform alter(Integer id, Platform platform) {
         // TODO Auto-generated method stub
-        if (id==null || id==0){
-            throw new IllegalArgumentException("The id cannot be null or 0");
-        }
-        if (!map.containsKey(id)){
-            throw new PlatformNotFoundException("The id " + id + "was not found");
-        }
+        validateId(id);
         validate(platform);
         getById(id);
         platform.setId(id);
@@ -77,13 +78,7 @@ public class PlatformService implements CrudService<Platform,Integer>{
         return platform;
     }
     public Platform deactivate(Integer id){
-        if (id==null || id==0){
-            throw new IllegalArgumentException("The id cannot be null or 0");
-        }
-        
-        if (!map.containsKey(id)){
-            throw new PlatformNotFoundException("The id " + id + "was not found");
-        }
+        validateId(id);
         Platform platform = map.get(id);
         platform.setIsActive(false);
         map.put(platform.getId(),platform);
