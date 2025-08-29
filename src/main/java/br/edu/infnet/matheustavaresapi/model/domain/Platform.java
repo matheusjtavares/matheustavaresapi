@@ -3,12 +3,13 @@ package br.edu.infnet.matheustavaresapi.model.domain;
 import java.time.LocalDate;
 
 public class Platform {
-    private int id;
+    private Integer id;
     private String name;
     private String manufacturer;
     private LocalDate releaseDate;
     private double price;
     private boolean isHandheld;
+    private boolean isActive;
 
     @Override
     public String toString() {
@@ -16,7 +17,7 @@ public class Platform {
         return String.format(formatString, name,manufacturer,releaseDate,price, (isHandheld == true) ? "Handheld" :"Desk");
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -62,5 +63,13 @@ public class Platform {
 
     public void setHandheld(boolean isHandheld) {
         this.isHandheld = isHandheld;
+    }
+
+    public boolean isIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
     }
 }

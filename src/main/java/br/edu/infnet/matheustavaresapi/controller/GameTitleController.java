@@ -11,7 +11,7 @@ import br.edu.infnet.matheustavaresapi.model.domain.GameTitle;
 import br.edu.infnet.matheustavaresapi.model.service.GameTitleService;
 
 @RestController
-@RequestMapping("/api/gameTitles")
+@RequestMapping("/api/gametitles")
 public class GameTitleController {
 
     private final GameTitleService gameTitleService;
