@@ -1,20 +1,20 @@
-1;Alice Johnson;25;true;alice.johnson@example.com;USA
-2;Bruno Silva;32;false;bruno.silva@example.com;Brazil
-3;Chloe Zhang;28;true;chloe.zhang@example.com;China
-4;David Miller;40;true;david.miller@example.com;UK
-5;Elena Rossi;22;true;elena.rossi@example.com;Italy
-6;Frank Dubois;35;false;frank.dubois@example.com;France
-7;Gabriela Torres;27;true;gabriela.torres@example.com;Mexico
-8;Hiroshi Tanaka;30;true;hiroshi.tanaka@example.com;Japan
-9;Ingrid Müller;29;true;ingrid.muller@example.com;Germany
-10;John Smith;45;false;john.smith@example.com;Canada
-11;Katarina Novak;31;true;katarina.novak@example.com;Croatia
-12;Luis Fernández;26;true;luis.fernandez@example.com;Spain
-13;Maria Popov;33;true;maria.popov@example.com;Russia
-14;Noura Haddad;24;false;noura.haddad@example.com;UAE
-15;Omar Ali;38;true;omar.ali@example.com;Egypt
-16;Priya Sharma;29;true;priya.sharma@example.com;India
-17;Quentin Lefevre;41;false;quentin.lefevre@example.com;Belgium
-18;Rafael Costa;36;true;rafael.costa@example.com;Portugal
-19;Sophia Brown;23;true;sophia.brown@example.com;Australia
-20;Thomas Andersen;34;true;thomas.andersen@example.com;Denmark
+1;Alice Johnson;25;true;alice.johnson@example.com;USA;PlayStation 5
+2;Bruno Silva;32;false;bruno.silva@example.com;Brazil;Xbox Series X
+3;Chloe Zhang;28;true;chloe.zhang@example.com;China;Nintendo Switch
+4;David Miller;40;true;david.miller@example.com;UK;PC
+5;Elena Rossi;22;true;elena.rossi@example.com;Italy;PlayStation 4
+6;Frank Dubois;35;false;frank.dubois@example.com;France;Xbox One
+7;Gabriela Torres;27;true;gabriela.torres@example.com;Mexico;Nintendo Switch
+8;Hiroshi Tanaka;30;true;hiroshi.tanaka@example.com;Japan;PlayStation 5
+9;Ingrid Müller;29;true;ingrid.muller@example.com;Germany;PC
+10;John Smith;45;false;john.smith@example.com;Canada;Xbox Series X
+11;Katarina Novak;31;true;katarina.novak@example.com;Croatia;PlayStation 4
+12;Luis Fernández;26;true;luis.fernandez@example.com;Spain;Nintendo Switch
+13;Maria Popov;33;true;maria.popov@example.com;Russia;PC
+14;Noura Haddad;24;false;noura.haddad@example.com;UAE;Xbox One
+15;Omar Ali;38;true;omar.ali@example.com;Egypt;PlayStation 5
+16;Priya Sharma;29;true;priya.sharma@example.com;India;Nintendo Switch
+17;Quentin Lefevre;41;false;quentin.lefevre@example.com;Belgium;PC
+18;Rafael Costa;36;true;rafael.costa@example.com;Portugal;Xbox Series X
+19;Sophia Brown;23;true;sophia.brown@example.com;Australia;PlayStation 4
+20;Thomas Andersen;34;true;thomas.andersen@example.com;Denmark;Nintendo Switch

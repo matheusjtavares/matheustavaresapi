@@ -6,17 +6,22 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import br.edu.infnet.matheustavaresapi.model.domain.Platform;
 import br.edu.infnet.matheustavaresapi.model.domain.Player;
+import br.edu.infnet.matheustavaresapi.model.service.PlatformService;
 import br.edu.infnet.matheustavaresapi.model.service.PlayerService;
 
 @Component
 public class PlayerLoader implements ApplicationRunner{
     
     private final PlayerService playerService;
-
-    public PlayerLoader(PlayerService playerService) {
+    private final PlatformService platformService;
+    
+    public PlayerLoader(PlayerService playerService,PlatformService platformService) {
         this.playerService = playerService;
+        this.platformService = platformService;
     }
+
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -34,6 +39,8 @@ public class PlayerLoader implements ApplicationRunner{
             player.setIsActive(Boolean.parseBoolean(fields[3]));
             player.setEmail(fields[4]);
             player.setCountry(fields[5]);
+            String platformName = fields[6];
+            player.setFavouritePlatform(platformService.getByName(platformName));
             playerService.include(player);
             System.out.println(player);
             line = reader.readLine();

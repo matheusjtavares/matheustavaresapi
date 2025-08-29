@@ -84,4 +84,12 @@ public class PlatformService implements CrudService<Platform,Integer>{
         map.put(platform.getId(),platform);
         return platform;
     }
+    public Platform getByName(String name){
+        for (Platform platform : map.values()) {
+            if (platform.getName().equals(name)){
+                return platform;
+            }
+        }
+        return new Platform();
+    }
 }

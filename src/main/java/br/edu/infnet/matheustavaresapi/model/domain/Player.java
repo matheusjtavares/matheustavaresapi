@@ -4,7 +4,7 @@ public class Player extends Person {
 
     private Library library;
     private String tier;
-    private GameTitle favouriteGame;
+    private Platform favouritePlatform;
 
     @Override
     public String toString() {
@@ -38,12 +38,12 @@ public class Player extends Person {
         this.tier = tier;
     }
 
-    public GameTitle getFavouriteGame() {
-        return favouriteGame;
+    public Platform getFavouritePlatform() {
+        return favouritePlatform;
     }
 
-    public void setFavouriteGame(GameTitle favouriteGame) {
-        this.favouriteGame = favouriteGame;
+    public void setFavouritePlatform(Platform favouritePlatform) {
+        this.favouritePlatform = favouritePlatform;
     }
 
 }
