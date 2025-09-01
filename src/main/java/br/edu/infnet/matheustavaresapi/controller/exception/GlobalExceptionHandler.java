@@ -3,7 +3,9 @@ package br.edu.infnet.matheustavaresapi.controller.exception;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -104,10 +106,31 @@ public class GlobalExceptionHandler {
         Map<String, String> errors = new HashMap<>();
 
         errors.put("Data/Hora",LocalDateTime.now().toString());
-        errors.put("Status", HttpStatus.BAD_REQUEST.toString());
+        errors.put("Status", HttpStatus.CONFLICT.toString());
         errors.put("Message", ex.getMessage());
 
-        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(errors, HttpStatus.CONFLICT);
+    }
+    
+    @ExceptionHandler(NoSuchElementException.class)
+    public ResponseEntity<Map<String, String>> handleValidationExceptions(NoSuchElementException ex) {
+        Map<String, String> errors = new HashMap<>();
+
+        errors.put("Data/Hora",LocalDateTime.now().toString());
+        errors.put("Status", HttpStatus.NOT_FOUND.toString());
+        errors.put("Message", ex.getMessage());
+
+        return new ResponseEntity<>(errors, HttpStatus.NOT_FOUND);
+    }
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<Map<String, String>> handleValidationExceptions(DataIntegrityViolationException ex) {
+        Map<String, String> errors = new HashMap<>();
+
+        errors.put("Data/Hora",LocalDateTime.now().toString());
+        errors.put("Status", HttpStatus.CONFLICT.toString());
+        errors.put("Message", ex.getMessage());
+
+        return new ResponseEntity<>(errors, HttpStatus.CONFLICT);
     }
     // Exceções Genéricas
     @ExceptionHandler(Exception.class)
