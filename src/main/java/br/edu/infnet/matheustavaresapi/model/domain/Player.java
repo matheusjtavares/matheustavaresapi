@@ -1,9 +1,20 @@
 package br.edu.infnet.matheustavaresapi.model.domain;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Transient;
+
+@Entity
 public class Player extends Person {
 
-    private Library library;
     private String tier;
+    private double gamingTime;
+    @Transient
+    private Library library;
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="favourite_platform_id")
     private Platform favouritePlatform;
 
     @Override
@@ -44,6 +55,14 @@ public class Player extends Person {
 
     public void setFavouritePlatform(Platform favouritePlatform) {
         this.favouritePlatform = favouritePlatform;
+    }
+
+    public double getGamingTime() {
+        return gamingTime;
+    }
+
+    public void setGamingTime(double gamingTime) {
+        this.gamingTime = gamingTime;
     }
 
 }

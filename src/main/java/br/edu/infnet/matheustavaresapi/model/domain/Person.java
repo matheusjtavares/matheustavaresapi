@@ -1,8 +1,16 @@
 package br.edu.infnet.matheustavaresapi.model.domain;
 
-public abstract class Person {
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 
+@MappedSuperclass
+public abstract class Person {
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
+
     private String name;
     private int age;
     private String String;

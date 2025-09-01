@@ -2,6 +2,8 @@ package br.edu.infnet.matheustavaresapi.controller;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -30,9 +32,12 @@ public class PlayerController {
         this.playerService = playerService;
     }
     @PostMapping()
-    public Player include(@RequestBody Player player) {
+    public ResponseEntity<Player> include(@RequestBody Player player) {
         //TODO: process POST request
-        return playerService.include(player);
+        Player newPlayer = playerService.include(player);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(newPlayer);
+
     }
     @PutMapping("/{id}")
     public Player alter(@PathVariable int id, @RequestBody Player player) {
@@ -51,8 +56,13 @@ public class PlayerController {
         playerService.delete(id);
     }
     @GetMapping("/all")
-    public List<Player> getList() {
-        return playerService.getList();
+    public ResponseEntity<List<Player>> getList() {
+        List<Player> playersList = playerService.getList();
+        if(playersList.isEmpty()){
+            return ResponseEntity.noContent().build();
+            
+        }
+        return ResponseEntity.ok(playersList);
     }
 
     @GetMapping("/{id}")

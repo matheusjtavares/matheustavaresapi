@@ -1,6 +1,5 @@
 package br.edu.infnet.matheustavaresapi.model.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -11,10 +10,16 @@ import org.springframework.stereotype.Service;
 import br.edu.infnet.matheustavaresapi.model.domain.Platform;
 import br.edu.infnet.matheustavaresapi.model.domain.exceptions.PlatformInvalidException;
 import br.edu.infnet.matheustavaresapi.model.domain.exceptions.PlatformNotFoundException;
+import br.edu.infnet.matheustavaresapi.model.repository.PlatformRepository;
 
 @Service
 public class PlatformService implements CrudService<Platform,Integer>{
 
+    private final PlatformRepository platformRepository;
+    public PlatformService(PlatformRepository platformRepository){
+        this.platformRepository = platformRepository;
+    }
+    
     private final Map<Integer,Platform> map = new ConcurrentHashMap<>();
     private final AtomicInteger nextId = new AtomicInteger(1);
     
@@ -50,7 +55,7 @@ public class PlatformService implements CrudService<Platform,Integer>{
     @Override
     public List<Platform> getList() {
         // TODO Auto-generated method stub
-        return new ArrayList<>(map.values());
+        return platformRepository.findAll();
 
     }
     
@@ -71,11 +76,8 @@ public class PlatformService implements CrudService<Platform,Integer>{
         if (platform.getId() != null && platform.getId() != 0 ) {
             throw new IllegalArgumentException("The id cannot be provided");
         }
-        // Validação específica include. Não deve ter ID
-        platform.setId(nextId.getAndIncrement());
-        map.put(platform.getId(),platform);
 
-        return platform;
+        return platformRepository.save(platform);
     }
     public Platform deactivate(Integer id){
         validateId(id);

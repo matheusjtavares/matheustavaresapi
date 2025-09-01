@@ -1,6 +1,7 @@
 package br.edu.infnet.matheustavaresapi;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.List;
 
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -40,14 +41,16 @@ public class PlayerLoader implements ApplicationRunner{
             player.setEmail(fields[4]);
             player.setCountry(fields[5]);
             String platformName = fields[6];
-            player.setFavouritePlatform(platformService.getByName(platformName));
+            Platform platform = new Platform();
+            platform.setName(platformName);
+            player.setFavouritePlatform(platform);
+            // player.setFavouritePlatform(platformService.getByName(platformName));
             playerService.include(player);
-            System.out.println(player);
             line = reader.readLine();
 
         }
-        System.out.println("-" + playerService.getList().size());
-
+        List<Player> players = playerService.getList();
+        players.forEach(System.out::println);
         reader.close();
 
     }
