@@ -13,20 +13,24 @@ import jakarta.validation.constraints.Size;
 @MappedSuperclass
 public abstract class Person {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotBlank(message="Name cannot be null")
-    @Size(min=3,max=50,message = "Name length must be between 3 and 50")
+    @NotBlank(message = "Name cannot be null or blank")
+    @Size(min = 3, max = 50, message = "Name length must be between 3 and 50 characters")
     private String name;
-    @Min(0)
+
+    @Min(value = 0, message = "Age cannot be negative")
     private int age;
-    @NotBlank(message="Email cannot be null")
-    @Email(message="This email is not valid")
+
+    @NotBlank(message = "Email cannot be null or blank")
+    @Email(message = "This email is not valid")
     private String email;
-    @NotBlank(message="Country cannot be null")
+
+    @NotBlank(message = "Country cannot be null or blank")
     private String country;
-    private boolean isActive;//default false
+
+    private boolean isActive = false; // default false
 
     @Override
     public String toString() {

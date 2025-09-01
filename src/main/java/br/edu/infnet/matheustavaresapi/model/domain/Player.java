@@ -6,17 +6,25 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Transient;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Player extends Person {
 
+
     private String tier;
+
+    @Min(value = 0, message = "Gaming time cannot be negative")
     private double gamingTime;
+
     @Transient
     private Library library;
-    @ManyToOne(cascade=CascadeType.MERGE)
-    @JoinColumn(name="favourite_platform_id")
+
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "favourite_platform_id")
     @Valid
+    @NotNull(message = "Favourite platform cannot be null")
     private Platform favouritePlatform;
 
     @Override

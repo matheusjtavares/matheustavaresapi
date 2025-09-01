@@ -39,7 +39,7 @@ public class PlayerService implements CrudService<Player, Integer> {
         if (id==null || id<=0){
             throw new IllegalArgumentException("The id cannot be null or 0");
         }
-        return playerRepository.findById(id).orElseThrow(() -> new PlayerNotFoundException("The id " + id + "was not found"));
+        return playerRepository.findById(id).orElseThrow(() -> new PlayerNotFoundException("The id " + id + " was not found"));
 
     }
 

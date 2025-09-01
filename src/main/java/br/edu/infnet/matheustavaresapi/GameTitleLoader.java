@@ -36,6 +36,7 @@ public class GameTitleLoader implements ApplicationRunner{
             gameTitle.setPlatform(fields[3]);
             gameTitle.setReleaseDate(LocalDate.parse(fields[3]));
             gameTitle.setVersion(Float.parseFloat(fields[4]));
+            gameTitle.setIsActive(true);
             gameTitleService.include(gameTitle);
             line = reader.readLine();
 

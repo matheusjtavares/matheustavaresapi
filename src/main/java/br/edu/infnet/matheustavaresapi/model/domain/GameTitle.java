@@ -6,17 +6,39 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class GameTitle {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @NotBlank(message = "Name cannot be blank")
+    @Size(min = 3, max = 50, message = "The name must be between 3 and 50 characters")
     private String name;
+
+    @NotBlank(message = "Publisher cannot be blank")
+    @Size(min = 1, max = 200, message = "The publisher name must be between 5 and 50 characters")
     private String publisher;
+
+    @NotBlank(message = "Platform cannot be blank")
+    @Size(min = 5, max = 50, message = "The platform name must be between 5 and 50 characters")
     private String platform;
+
+    @NotNull(message = "Release Date cannot be null")
+    @PastOrPresent(message = "Release Date cannot be in the future")
     private LocalDate releaseDate;
-    private float version;
+
+    @NotNull(message = "Version cannot be null")
+    @PositiveOrZero(message = "Version cannot be negative")
+    private Float version;
+
+    @NotNull(message = "isActive cannot be null")
     private Boolean isActive;
 
 

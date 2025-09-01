@@ -36,7 +36,7 @@ public class PlatformService implements CrudService<Platform,Integer>{
             throw new IllegalArgumentException("The id cannot be null or 0");
         }
         if (!map.containsKey(id)){
-            throw new PlatformNotFoundException("The id " + id + "was not found");
+            throw new PlatformNotFoundException("The id " + id + " was not found");
         }
     }
     @Override
@@ -51,7 +51,7 @@ public class PlatformService implements CrudService<Platform,Integer>{
         if (id==null || id<=0){
             throw new IllegalArgumentException("The id cannot be null or 0");
         }
-        return platformRepository.findById(id).orElseThrow(() -> new PlatformNotFoundException("The id " + id + "was not found"));
+        return platformRepository.findById(id).orElseThrow(() -> new PlatformNotFoundException("The id " + id + " was not found"));
     }
     @Override
     public List<Platform> getList() {
@@ -89,6 +89,6 @@ public class PlatformService implements CrudService<Platform,Integer>{
                 return plaformList.get(i);
             }
         }
-        return new Platform();
+        throw new PlatformNotFoundException("The name provided does not correspond to any platform within the database");
     }
 }

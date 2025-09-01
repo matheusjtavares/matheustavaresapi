@@ -38,7 +38,7 @@ public class GameTitleService implements CrudService<GameTitle, Integer> {
         if (id==null || id<=0){
             throw new IllegalArgumentException("The id cannot be null or 0");
         }
-        return gameTitleRepository.findById(id).orElseThrow(() -> new PlayerNotFoundException("The id " + id + "was not found"));
+        return gameTitleRepository.findById(id).orElseThrow(() -> new PlayerNotFoundException("The id " + id + " was not found"));
     }
 
     @Override
