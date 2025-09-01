@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import br.edu.infnet.matheustavaresapi.model.domain.GameTitle;
 import br.edu.infnet.matheustavaresapi.model.domain.exceptions.GameTitleInvalidException;
-import br.edu.infnet.matheustavaresapi.model.domain.exceptions.PlayerNotFoundException;
+import br.edu.infnet.matheustavaresapi.model.domain.exceptions.GameTitleNotFoundException;
 import br.edu.infnet.matheustavaresapi.model.repository.GameTitleRepository;
 @Service
 public class GameTitleService implements CrudService<GameTitle, Integer> {
@@ -38,7 +38,7 @@ public class GameTitleService implements CrudService<GameTitle, Integer> {
         if (id==null || id<=0){
             throw new IllegalArgumentException("The id cannot be null or 0");
         }
-        return gameTitleRepository.findById(id).orElseThrow(() -> new PlayerNotFoundException("The id " + id + " was not found"));
+        return gameTitleRepository.findById(id).orElseThrow(() -> new GameTitleNotFoundException("The id " + id + " was not found"));
     }
 
     @Override
