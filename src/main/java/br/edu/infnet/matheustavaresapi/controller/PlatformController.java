@@ -2,6 +2,8 @@ package br.edu.infnet.matheustavaresapi.controller;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -12,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.edu.infnet.matheustavaresapi.model.domain.Platform;
 import br.edu.infnet.matheustavaresapi.model.domain.Platform;
 import br.edu.infnet.matheustavaresapi.model.service.PlatformService;
 
@@ -28,33 +29,43 @@ public class PlatformController {
     }
     
     @PostMapping()
-    public Platform include(@RequestBody Platform platform) {
+    public ResponseEntity<Platform> include(@RequestBody Platform platform) {
         //TODO: process POST request
-        return platformService.include(platform);
+        Platform newPlatform = platformService.include(platform);
+        return ResponseEntity.status(HttpStatus.CREATED).body(newPlatform);
     }
     @PutMapping("/{id}")
-    public Platform alter(@PathVariable int id, @RequestBody Platform platform) {
+    public ResponseEntity<Platform> alter(@PathVariable int id, @RequestBody Platform platform) {
         //TODO: process PUT request
-        return platformService.alter(id,platform);
+        Platform alteredPlatform = platformService.alter(id,platform);
+        return ResponseEntity.ok(alteredPlatform);
         
     }
     @PatchMapping("/{id}/deactivate")
-    public Platform deactivate(@PathVariable int id) {
+    public ResponseEntity<Platform> deactivate(@PathVariable int id) {
         //TODO: process PUT request
-        return platformService.deactivate(id);
+        Platform deactivatedPlatform = platformService.deactivate(id);
+        return ResponseEntity.ok(deactivatedPlatform);
         
     }
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable int id){
+    public ResponseEntity<Void> delete(@PathVariable int id){
         platformService.delete(id);
+        return ResponseEntity.noContent().build();
     }
     @GetMapping("/all")
-    public List<Platform> getList() {
-        return platformService.getList();
+    public ResponseEntity<List<Platform>> getList() {
+        List<Platform> listPlatforms = platformService.getList();
+        if(listPlatforms.isEmpty()){
+            return ResponseEntity.noContent().build();
+            
+        }
+        return ResponseEntity.ok(listPlatforms);
     }
 
     @GetMapping("/{id}")
-    public Platform getPlatform(@PathVariable int id) {
-        return platformService.getById(id);
+    public ResponseEntity<Platform> getPlatform(@PathVariable int id) {
+        Platform platform  = platformService.getById(id);
+        return ResponseEntity.ok(platform);
     }
 }
