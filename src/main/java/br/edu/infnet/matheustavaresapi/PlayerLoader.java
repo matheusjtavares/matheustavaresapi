@@ -5,14 +5,19 @@ import java.util.List;
 
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.context.annotation.DependsOn;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.matheustavaresapi.model.domain.Platform;
 import br.edu.infnet.matheustavaresapi.model.domain.Player;
+import br.edu.infnet.matheustavaresapi.model.domain.exceptions.PlayerInvalidException;
 import br.edu.infnet.matheustavaresapi.model.service.PlatformService;
 import br.edu.infnet.matheustavaresapi.model.service.PlayerService;
 
 @Component
+@DependsOn("platformLoader")
+@Order(2)
 public class PlayerLoader implements ApplicationRunner{
     
     private final PlayerService playerService;
@@ -41,11 +46,17 @@ public class PlayerLoader implements ApplicationRunner{
             player.setEmail(fields[4]);
             player.setCountry(fields[5]);
             String platformName = fields[6];
-            Platform platform = new Platform();
-            platform.setName(platformName);
+            // Platform platform = new Platform();
+            // platform.setName(platformName);
+            // player.setFavouritePlatform(platform);
+            // platformService.include(platform);
+            Platform platform = platformService.getByName(platformName);
             player.setFavouritePlatform(platform);
-            // player.setFavouritePlatform(platformService.getByName(platformName));
-            playerService.include(player);
+            try {
+                playerService.include(player); 
+            } catch (PlayerInvalidException e) {
+                System.err.println("Failed to create entity player: " + e.getMessage());
+            }
             line = reader.readLine();
 
         }

@@ -5,12 +5,14 @@ import java.time.LocalDate;
 
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.matheustavaresapi.model.domain.GameTitle;
 import br.edu.infnet.matheustavaresapi.model.service.GameTitleService;
 
 @Component
+@Order(3)
 public class GameTitleLoader implements ApplicationRunner{
 
     private final GameTitleService gameTitleService;

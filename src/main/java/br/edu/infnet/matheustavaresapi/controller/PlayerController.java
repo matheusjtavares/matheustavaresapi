@@ -40,20 +40,23 @@ public class PlayerController {
 
     }
     @PutMapping("/{id}")
-    public Player alter(@PathVariable int id, @RequestBody Player player) {
+    public ResponseEntity<Player> alter(@PathVariable int id, @RequestBody Player player) {
         //TODO: process PUT request
-        return playerService.alter(id,player);
+        Player playerAltered = playerService.alter(id,player);
+        return ResponseEntity.ok(playerAltered);
         
     }
     @PatchMapping("/{id}/deactivate")
-    public Player deactivate(@PathVariable int id) {
+    public ResponseEntity<Player> deactivate(@PathVariable int id) {
         //TODO: process PUT request
-        return playerService.deactivate(id);
+        Player player = playerService.deactivate(id);
+        return ResponseEntity.ok(player);
         
     }
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable int id){
+    public ResponseEntity<Void> delete(@PathVariable int id){
         playerService.delete(id);
+        return ResponseEntity.noContent().build();
     }
     @GetMapping("/all")
     public ResponseEntity<List<Player>> getList() {
@@ -66,8 +69,9 @@ public class PlayerController {
     }
 
     @GetMapping("/{id}")
-    public Player getPlayer(@PathVariable int id) {
-        return playerService.getById(id);
+    public ResponseEntity<Player> getPlayer(@PathVariable int id) {
+        Player player  = playerService.getById(id);
+        return ResponseEntity.ok(player);
     }
     
     

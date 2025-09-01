@@ -6,12 +6,14 @@ import java.time.LocalDate;
 
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.matheustavaresapi.model.domain.Platform;
 import br.edu.infnet.matheustavaresapi.model.service.PlatformService;
 
-@Component
+@Component("platformLoader")
+@Order(1)
 public class PlatformLoader implements ApplicationRunner {
     private final PlatformService platformService;
     public PlatformLoader(PlatformService platformService){
@@ -34,8 +36,6 @@ public class PlatformLoader implements ApplicationRunner {
             platform.setPrice(Double.parseDouble(fields[3]));
             platform.setHandheld(Boolean.parseBoolean(fields[4]));
             platformService.include(platform);
-            System.out.println(platform);
-
             line = reader.readLine();
         }
 

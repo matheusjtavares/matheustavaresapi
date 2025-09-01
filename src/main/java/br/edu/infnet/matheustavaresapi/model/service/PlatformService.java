@@ -48,9 +48,10 @@ public class PlatformService implements CrudService<Platform,Integer>{
     @Override
     public Platform getById(Integer id) {
         // TODO Auto-generated method stub
-        Platform platform = map.get(id);
-        validate(platform);
-        return platform;
+        if (id==null || id<=0){
+            throw new IllegalArgumentException("The id cannot be null or 0");
+        }
+        return platformRepository.findById(id).orElseThrow(() -> new PlatformNotFoundException("The id " + id + "was not found"));
     }
     @Override
     public List<Platform> getList() {
@@ -62,12 +63,9 @@ public class PlatformService implements CrudService<Platform,Integer>{
     @Override
     public Platform alter(Integer id, Platform platform) {
         // TODO Auto-generated method stub
-        validateId(id);
-        validate(platform);
         getById(id);
-        platform.setId(id);
-        map.replace(id,platform);
-        return platform;
+        validate(platform);
+        return platformRepository.save(platform);
     }
     @Override
     public Platform include(Platform platform) {
@@ -80,16 +78,15 @@ public class PlatformService implements CrudService<Platform,Integer>{
         return platformRepository.save(platform);
     }
     public Platform deactivate(Integer id){
-        validateId(id);
-        Platform platform = map.get(id);
+        Platform platform = getById(id);
         platform.setIsActive(false);
-        map.put(platform.getId(),platform);
-        return platform;
+        return platformRepository.save(platform);
     }
     public Platform getByName(String name){
-        for (Platform platform : map.values()) {
-            if (platform.getName().equals(name)){
-                return platform;
+        List<Platform> plaformList = getList();
+        for (int i = 0; i < plaformList.size(); i++) {
+            if ( plaformList.get(i).getName().equals(name) ){
+                return plaformList.get(i);
             }
         }
         return new Platform();

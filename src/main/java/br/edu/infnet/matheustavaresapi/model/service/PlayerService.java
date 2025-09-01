@@ -1,9 +1,6 @@
 package br.edu.infnet.matheustavaresapi.model.service;
 
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import org.springframework.stereotype.Service;
 
@@ -19,9 +16,6 @@ public class PlayerService implements CrudService<Player, Integer> {
     public PlayerService(PlayerRepository playerRepository){
         this.playerRepository = playerRepository;
     }
-
-    private final Map<Integer,Player> map = new ConcurrentHashMap<>();
-    private final AtomicInteger nextId = new AtomicInteger(1);
 
     private void validate(Player player){
         if (player==null){
@@ -51,18 +45,10 @@ public class PlayerService implements CrudService<Player, Integer> {
 
     @Override
     public Player alter(Integer id, Player player) {
-        // TODO Auto-generated method stub
-        if (id==null || id==0){
-            throw new IllegalArgumentException("The id cannot be null or 0");
-        }
-        if (!map.containsKey(id)){
-            throw new PlayerNotFoundException("The id " + id + "was not found");
-        }
+
         validate(player);
         getById(id);
-        player.setId(id);
-        map.replace(id,player);
-        return player;
+        return playerRepository.save(player);
     }
 
     @Override
@@ -85,17 +71,10 @@ public class PlayerService implements CrudService<Player, Integer> {
         return playerRepository.findAll();
     }
     public Player deactivate(Integer id){
-        if (id==null || id==0){
-            throw new IllegalArgumentException("The id cannot be null or 0");
-        }
-        
-        if (!map.containsKey(id)){
-            throw new PlayerNotFoundException("The id " + id + "was not found");
-        }
-        Player player = map.get(id);
+
+        Player player = getById(id);
         player.setIsActive(false);
-        map.put(player.getId(),player);
-        return player;
+        return playerRepository.save(player);
     }
 
 }

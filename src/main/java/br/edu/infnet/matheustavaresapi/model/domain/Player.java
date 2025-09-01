@@ -13,7 +13,7 @@ public class Player extends Person {
     private double gamingTime;
     @Transient
     private Library library;
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne(cascade=CascadeType.MERGE)
     @JoinColumn(name="favourite_platform_id")
     private Platform favouritePlatform;
 
