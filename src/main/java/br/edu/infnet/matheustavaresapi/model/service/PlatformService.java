@@ -1,9 +1,6 @@
 package br.edu.infnet.matheustavaresapi.model.service;
 
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import org.springframework.stereotype.Service;
 
@@ -20,9 +17,6 @@ public class PlatformService implements CrudService<Platform,Integer>{
         this.platformRepository = platformRepository;
     }
     
-    private final Map<Integer,Platform> map = new ConcurrentHashMap<>();
-    private final AtomicInteger nextId = new AtomicInteger(1);
-    
     private void validate(Platform platform){
         if (platform == null){
             throw new IllegalArgumentException("Platform cannot be null");
@@ -31,19 +25,11 @@ public class PlatformService implements CrudService<Platform,Integer>{
             throw new PlatformInvalidException("Platform name is mandatory");
         }
     }
-    private void validateId(Integer id){
-        if (id==null || id==0){
-            throw new IllegalArgumentException("The id cannot be null or 0");
-        }
-        if (!map.containsKey(id)){
-            throw new PlatformNotFoundException("The id " + id + " was not found");
-        }
-    }
     @Override
     public void delete(Integer id) {
         // TODO Auto-generated method stub
-        validateId(id);
-        map.remove(id);
+        getById(id);
+        platformRepository.deleteById(id);
     }
     @Override
     public Platform getById(Integer id) {
