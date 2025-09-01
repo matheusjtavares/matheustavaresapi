@@ -7,5 +7,5 @@ import br.edu.infnet.matheustavaresapi.model.domain.Player;
 
 @Repository
 public interface PlayerRepository extends JpaRepository<Player, Integer> {
-
+    
 }

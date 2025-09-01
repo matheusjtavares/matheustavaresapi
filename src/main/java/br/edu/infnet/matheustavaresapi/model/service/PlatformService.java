@@ -69,12 +69,8 @@ public class PlatformService implements CrudService<Platform,Integer>{
         return platformRepository.save(platform);
     }
     public Platform getByName(String name){
-        List<Platform> plaformList = getList();
-        for (int i = 0; i < plaformList.size(); i++) {
-            if ( plaformList.get(i).getName().equals(name) ){
-                return plaformList.get(i);
-            }
-        }
-        throw new PlatformNotFoundException("The name provided does not correspond to any platform within the database");
+        Platform platform = platformRepository.findByName(name);
+        validate(platform);
+        return platform;
     }
 }

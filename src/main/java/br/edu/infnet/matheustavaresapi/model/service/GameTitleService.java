@@ -71,4 +71,12 @@ public class GameTitleService implements CrudService<GameTitle, Integer> {
         gameTitle.setIsActive(false);
         return gameTitleRepository.save(gameTitle);
     }
+    public List<GameTitle> getByPublisher(String publisher){
+
+        return gameTitleRepository.findByPublisher(publisher);
+    }
+    public List<GameTitle> getByNameContainaing(String name){
+    
+        return gameTitleRepository.findByNameContaining(name);
+    }
 }
