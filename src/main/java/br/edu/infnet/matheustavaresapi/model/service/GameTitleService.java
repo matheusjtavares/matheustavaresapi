@@ -1,21 +1,21 @@
 package br.edu.infnet.matheustavaresapi.model.service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.matheustavaresapi.model.domain.GameTitle;
 import br.edu.infnet.matheustavaresapi.model.domain.exceptions.GameTitleInvalidException;
-import br.edu.infnet.matheustavaresapi.model.domain.exceptions.GameTitleNotFoundException;
+import br.edu.infnet.matheustavaresapi.model.domain.exceptions.PlayerNotFoundException;
+import br.edu.infnet.matheustavaresapi.model.repository.GameTitleRepository;
 @Service
 public class GameTitleService implements CrudService<GameTitle, Integer> {
 
-    private final Map<Integer,GameTitle> map = new ConcurrentHashMap<>();
-    private final AtomicInteger nextId = new AtomicInteger(1);
+    private final GameTitleRepository gameTitleRepository;
+
+    public GameTitleService(GameTitleRepository gameTitleRepository){
+        this.gameTitleRepository = gameTitleRepository;
+    }
     
     private void validate(GameTitle gameTitle){
         if (gameTitle == null){
@@ -25,45 +25,34 @@ public class GameTitleService implements CrudService<GameTitle, Integer> {
             throw new GameTitleInvalidException("GameTitle name is mandatory");
         }
     }
-    private void validateId(Integer id){
-        if (id==null || id==0){
-            throw new IllegalArgumentException("The id cannot be null or 0");
-        }
-        if (!map.containsKey(id)){
-            throw new GameTitleNotFoundException("The id " + id + "was not found");
-        }
-    }
+
     @Override
     public void delete(Integer id) {
         // TODO Auto-generated method stub
-        validateId(id);
-        map.remove(id);
+        getById(id);
+        gameTitleRepository.deleteById(id);
     }
 
     @Override
     public GameTitle getById(Integer id) {
-        // TODO Auto-generated method stub
-        GameTitle gameTitle = map.get(id);
-        validate(gameTitle);
-        return gameTitle;
-
+        if (id==null || id<=0){
+            throw new IllegalArgumentException("The id cannot be null or 0");
+        }
+        return gameTitleRepository.findById(id).orElseThrow(() -> new PlayerNotFoundException("The id " + id + "was not found"));
     }
 
     @Override
     public GameTitle alter(Integer id, GameTitle gameTitle) {
         // TODO Auto-generated method stub
-        validateId(id);
         validate(gameTitle);
         getById(id);
-        gameTitle.setId(id);
-        map.replace(id,gameTitle);
-        return gameTitle;
+        return gameTitleRepository.save(gameTitle);
     }
 
     @Override
     public List<GameTitle> getList() {
         // TODO Auto-generated method stub
-        return new ArrayList<>(map.values());
+        return gameTitleRepository.findAll();
         
     }
 
@@ -74,16 +63,12 @@ public class GameTitleService implements CrudService<GameTitle, Integer> {
         if (gameTitle.getId() != null && gameTitle.getId() != 0 ) {
             throw new IllegalArgumentException("The id cannot be provided");
         }
-        gameTitle.setId(nextId.getAndIncrement());
-        map.put(gameTitle.getId(),gameTitle);
-        return gameTitle;
+        return gameTitleRepository.save(gameTitle);
     }
 
     public GameTitle deactivate(Integer id){
-        validateId(id);
-        GameTitle gameTitle = map.get(id);
+        GameTitle gameTitle = getById(id);
         gameTitle.setIsActive(false);
-        map.put(gameTitle.getId(),gameTitle);
-        return gameTitle;
+        return gameTitleRepository.save(gameTitle);
     }
 }

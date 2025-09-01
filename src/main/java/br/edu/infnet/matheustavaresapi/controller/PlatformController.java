@@ -45,7 +45,7 @@ public class PlatformController {
     public ResponseEntity<Platform> deactivate(@PathVariable int id) {
         //TODO: process PUT request
         Platform deactivatedPlatform = platformService.deactivate(id);
-        return ResponseEntity.ok(deactivatedPlatform);
+        return ResponseEntity.noContent().build();
         
     }
     @DeleteMapping("/{id}")

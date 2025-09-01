@@ -50,7 +50,7 @@ public class PlayerController {
     public ResponseEntity<Player> deactivate(@PathVariable int id) {
         //TODO: process PUT request
         Player player = playerService.deactivate(id);
-        return ResponseEntity.ok(player);
+        return ResponseEntity.noContent().build();
         
     }
     @DeleteMapping("/{id}")
