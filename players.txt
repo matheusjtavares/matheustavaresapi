@@ -18,3 +18,4 @@
 18;Rafael Costa;36;true;rafael.costa@example.com;Portugal;Xbox Series X
 19;Sophia Brown;23;true;sophia.brown@example.com;Australia;PlayStation 4
 20;Thomas Andersen;34;true;thomas.andersen@example.com;Denmark;Nintendo Switch
+20;aa;34;true;;Denmark;Nintendo Switch

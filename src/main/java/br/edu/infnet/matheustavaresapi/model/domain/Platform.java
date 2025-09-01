@@ -6,15 +6,25 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Platform {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
+    @NotBlank
+    @Size(min=3,max=50, message = "The name must be between 3 and 50 characters")
     private String name;
+    @NotBlank
+    @Size(min=3,max=50, message = "The manufacturer must be between 3 and 50 characters")
     private String manufacturer;
+    @PastOrPresent(message= "Release Date cannot be in the future")
     private LocalDate releaseDate;
+    @Min(0)
     private double price;
     private boolean isHandheld;
     private boolean isActive;

@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Transient;
+import jakarta.validation.Valid;
 
 @Entity
 public class Player extends Person {
@@ -15,6 +16,7 @@ public class Player extends Person {
     private Library library;
     @ManyToOne(cascade=CascadeType.MERGE)
     @JoinColumn(name="favourite_platform_id")
+    @Valid
     private Platform favouritePlatform;
 
     @Override

@@ -1,7 +1,6 @@
 package br.edu.infnet.matheustavaresapi;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.List;
 
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -52,16 +51,17 @@ public class PlayerLoader implements ApplicationRunner{
             // platformService.include(platform);
             Platform platform = platformService.getByName(platformName);
             player.setFavouritePlatform(platform);
+            System.out.println(player);
             try {
                 playerService.include(player); 
             } catch (PlayerInvalidException e) {
+                System.err.println("Invalid Player Object: " + e.getMessage());
+            } catch (Exception e){
                 System.err.println("Failed to create entity player: " + e.getMessage());
             }
             line = reader.readLine();
 
         }
-        List<Player> players = playerService.getList();
-        players.forEach(System.out::println);
         reader.close();
 
     }

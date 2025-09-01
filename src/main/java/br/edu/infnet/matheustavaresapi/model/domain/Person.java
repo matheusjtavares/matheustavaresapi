@@ -1,9 +1,14 @@
 package br.edu.infnet.matheustavaresapi.model.domain;
 
+
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @MappedSuperclass
 public abstract class Person {
@@ -11,18 +16,22 @@ public abstract class Person {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
 
+    @NotBlank(message="Name cannot be null")
+    @Size(min=3,max=50,message = "Name length must be between 3 and 50")
     private String name;
+    @Min(0)
     private int age;
-    private String String;
+    @NotBlank(message="Email cannot be null")
+    @Email(message="This email is not valid")
     private String email;
-    private String phone;
+    @NotBlank(message="Country cannot be null")
     private String country;
     private boolean isActive;//default false
 
     @Override
     public String toString() {
-        return "Person [name=" + name + ", age=" + age + ", String=" + String + ", email=" + email + ", phone=" + phone
-                + ", country=" + country + "]";
+        return "Person [name=" + name + ", age=" + age + ", email=" + email +
+                ", country=" + country + "]";
     }
 
     public abstract String getType();
@@ -43,13 +52,6 @@ public abstract class Person {
         this.age = age;
     }
 
-    public String getString() {
-        return String;
-    }
-
-    public void setString(String string) {
-        String = string;
-    }
 
     public String getEmail() {
         return email;
@@ -57,14 +59,6 @@ public abstract class Person {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
     }
 
     public String getCountry() {
