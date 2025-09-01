@@ -10,7 +10,10 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
@@ -31,9 +34,11 @@ public class GameTitle {
     @Size(min = 1, max = 200, message = "The publisher name must be between 5 and 50 characters")
     private String publisher;
 
-    @NotBlank(message = "Platform cannot be blank")
-    @Size(min = 5, max = 50, message = "The platform name must be between 5 and 50 characters")
-    private String platform;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "platform_id")
+    @Valid
+    @NotNull(message = "Favourite platform cannot be null")
+    private Platform platform;
 
     @NotNull(message = "Release Date cannot be null")
     @PastOrPresent(message = "Release Date cannot be in the future")
@@ -76,12 +81,12 @@ public class GameTitle {
     }
 
 
-    public String getPlatform() {
+    public Platform getPlatform() {
         return platform;
     }
 
 
-    public void setPlatform(String platform) {
+    public void setPlatform(Platform platform) {
         this.platform = platform;
     }
 
@@ -119,6 +124,14 @@ public class GameTitle {
 
     public void setIsActive(Boolean isActive) {
         this.isActive = isActive;
+    }
+
+    public List<GameCopy> getGameCopies() {
+        return gameCopies;
+    }
+
+    public void setGameCopies(List<GameCopy> gameCopies) {
+        this.gameCopies = gameCopies;
     }
 }
 

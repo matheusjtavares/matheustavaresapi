@@ -22,7 +22,7 @@ public class GameCopy {
     @Valid
     @NotNull(message = "GameTitle platform cannot be null")
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="gameT_title_id", nullable=false)
+    @JoinColumn(name="game_title_id", nullable=false)
     public GameTitle gameTitle;
 
     @NotNull(message = "Owned Since Date cannot be null")

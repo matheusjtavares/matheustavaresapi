@@ -70,7 +70,9 @@ public class PlatformService implements CrudService<Platform,Integer>{
     }
     public Platform getByName(String name){
         Platform platform = platformRepository.findByName(name);
-        validate(platform);
+        if (platform == null){
+            throw new PlatformNotFoundException(name + " cannot be found in Platform");
+        }
         return platform;
     }
 }

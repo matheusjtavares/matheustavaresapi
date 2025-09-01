@@ -1,11 +1,16 @@
 package br.edu.infnet.matheustavaresapi.model.domain;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PastOrPresent;
@@ -28,6 +33,9 @@ public class Platform {
     private double price;
     private boolean isHandheld;
     private boolean isActive;
+    
+    @OneToMany(mappedBy="platform",cascade=CascadeType.ALL, orphanRemoval=true,fetch=FetchType.LAZY)
+    private List<GameTitle> gameTitles = new ArrayList<>();
 
     @Override
     public String toString() {
@@ -89,5 +97,13 @@ public class Platform {
 
     public void setIsActive(boolean isActive) {
         this.isActive = isActive;
+    }
+
+    public List<GameTitle> getGameTitles() {
+        return gameTitles;
+    }
+
+    public void setGameTitles(List<GameTitle> gameTitles) {
+        this.gameTitles = gameTitles;
     }
 }

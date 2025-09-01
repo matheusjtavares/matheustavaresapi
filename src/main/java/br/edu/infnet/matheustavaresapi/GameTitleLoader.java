@@ -9,16 +9,21 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.matheustavaresapi.model.domain.GameTitle;
+import br.edu.infnet.matheustavaresapi.model.domain.Platform;
+import br.edu.infnet.matheustavaresapi.model.domain.exceptions.PlatformNotFoundException;
 import br.edu.infnet.matheustavaresapi.model.service.GameTitleService;
+import br.edu.infnet.matheustavaresapi.model.service.PlatformService;
 
 @Component
 @Order(3)
 public class GameTitleLoader implements ApplicationRunner{
 
     private final GameTitleService gameTitleService;
+    private final PlatformService platformService;
 
-    public GameTitleLoader(GameTitleService gameTitleService){
+    public GameTitleLoader(GameTitleService gameTitleService,PlatformService platformService){
         this.gameTitleService = gameTitleService;
+        this.platformService = platformService;
     }
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -32,8 +37,17 @@ public class GameTitleLoader implements ApplicationRunner{
             fields = line.split(";");
             GameTitle gameTitle = new GameTitle();
             gameTitle.setName(fields[0]);
-            gameTitle.setPublisher(fields[2]);
-            gameTitle.setPlatform(fields[3]);
+            gameTitle.setPublisher(fields[1]);
+            String platformName = fields[2];
+            Platform platform = null;
+            try {
+                platform = platformService.getByName(platformName);  
+            } catch (PlatformNotFoundException e) {
+                System.err.println("Invalid Platform Name: " + e.getMessage());
+                line = reader.readLine();
+                continue;
+            }
+            gameTitle.setPlatform(platform);
             gameTitle.setReleaseDate(LocalDate.parse(fields[3]));
             gameTitle.setVersion(Float.parseFloat(fields[4]));
             gameTitle.setIsActive(true);

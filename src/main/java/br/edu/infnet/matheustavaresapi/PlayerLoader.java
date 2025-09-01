@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import br.edu.infnet.matheustavaresapi.model.domain.Platform;
 import br.edu.infnet.matheustavaresapi.model.domain.Player;
+import br.edu.infnet.matheustavaresapi.model.domain.exceptions.PlatformNotFoundException;
 import br.edu.infnet.matheustavaresapi.model.domain.exceptions.PlayerInvalidException;
 import br.edu.infnet.matheustavaresapi.model.service.PlatformService;
 import br.edu.infnet.matheustavaresapi.model.service.PlayerService;
@@ -49,7 +50,14 @@ public class PlayerLoader implements ApplicationRunner{
             // platform.setName(platformName);
             // player.setFavouritePlatform(platform);
             // platformService.include(platform);
-            Platform platform = platformService.getByName(platformName);
+            Platform platform = null;
+            try {
+                platform = platformService.getByName(platformName);  
+            } catch (PlatformNotFoundException e) {
+                System.err.println("Invalid Platform Name: " + e.getMessage());
+                line = reader.readLine();
+                continue;
+            }
             player.setFavouritePlatform(platform);
             System.out.println(player);
             try {

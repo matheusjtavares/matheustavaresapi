@@ -83,4 +83,12 @@ public class Player extends Person {
         this.gamingTime = gamingTime;
     }
 
+    public List<GameCopy> getGameCopies() {
+        return gameCopies;
+    }
+
+    public void setGameCopies(List<GameCopy> gameCopies) {
+        this.gameCopies = gameCopies;
+    }
+
 }
