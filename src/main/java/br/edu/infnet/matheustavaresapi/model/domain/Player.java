@@ -11,7 +11,6 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Transient;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -24,9 +23,6 @@ public class Player extends Person {
 
     @Min(value = 0, message = "Gaming time cannot be negative")
     private double gamingTime;
-
-    @Transient
-    private Library library;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "favourite_platform_id")
@@ -52,14 +48,6 @@ public class Player extends Person {
     @Override
     public String getType() {
         return "Player";
-    }
-
-    public Library getLibrary() {
-        return library;
-    }
-
-    public void setLibrary(Library library) {
-        this.library = library;
     }
 
     public String getTier() {
