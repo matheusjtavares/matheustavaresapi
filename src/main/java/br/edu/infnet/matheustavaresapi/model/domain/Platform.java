@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -35,6 +37,7 @@ public class Platform {
     private boolean isActive;
     
     @OneToMany(mappedBy="platform",cascade=CascadeType.ALL, orphanRemoval=true,fetch=FetchType.LAZY)
+    @JsonManagedReference(value = "platform-gameTitles")
     private List<GameTitle> gameTitles = new ArrayList<>();
 
     @Override

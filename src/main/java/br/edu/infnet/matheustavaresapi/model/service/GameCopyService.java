@@ -2,11 +2,14 @@ package br.edu.infnet.matheustavaresapi.model.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import br.edu.infnet.matheustavaresapi.model.domain.GameCopy;
 import br.edu.infnet.matheustavaresapi.model.domain.exceptions.GameCopyNotFoundException;
 import br.edu.infnet.matheustavaresapi.model.repository.GameCopyRepository;
-
+@Service
 public class GameCopyService implements CrudService<GameCopy, Integer>{
+
     private final GameCopyRepository gameCopyRepository;
     public GameCopyService(GameCopyRepository gameCopyRepository){
         this.gameCopyRepository = gameCopyRepository;

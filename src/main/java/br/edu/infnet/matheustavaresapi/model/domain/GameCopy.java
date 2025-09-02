@@ -2,6 +2,8 @@ package br.edu.infnet.matheustavaresapi.model.domain;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -21,19 +23,21 @@ public class GameCopy {
 
     @Valid
     @NotNull(message = "GameTitle platform cannot be null")
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JsonBackReference(value="gameTitle-gameCopy")
     @JoinColumn(name="game_title_id", nullable=false)
-    public GameTitle gameTitle;
+    private GameTitle gameTitle;
 
     @NotNull(message = "Owned Since Date cannot be null")
     @PastOrPresent(message = "Owned Since Date cannot be in the future")
-    public LocalDate ownedSinceDate;
+    private LocalDate ownedSinceDate;
     
     @Valid
     @NotNull(message = "Player Cannot be null")
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JsonBackReference(value="player-gameCopy")
     @JoinColumn(name="player_id", nullable=false)
-    public Player player;
+    private Player player;
 
     public Integer getId() {
         return id;

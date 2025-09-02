@@ -4,6 +4,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -37,6 +40,7 @@ public class GameTitle {
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "platform_id")
     @Valid
+    @JsonBackReference("platform-gameTitles")
     @NotNull(message = "Favourite platform cannot be null")
     private Platform platform;
 
@@ -51,7 +55,8 @@ public class GameTitle {
     @NotNull(message = "isActive cannot be null")
     private Boolean isActive;
 
-    @OneToMany(mappedBy="gameTitle",cascade=CascadeType.ALL, orphanRemoval=true,fetch=FetchType.LAZY)
+    @OneToMany(mappedBy="gameTitle",cascade=CascadeType.ALL, orphanRemoval=true,fetch=FetchType.EAGER)
+    @JsonManagedReference(value="gameTitle-gameCopy")
     private List<GameCopy> gameCopies = new ArrayList<>();
 
     @Override
