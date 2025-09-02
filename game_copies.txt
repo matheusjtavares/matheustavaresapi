@@ -1,0 +1,20 @@
+Alice Johnson;Final Fantasy VII;2021-06-12
+Alice Johnson;Gran Turismo;2022-01-18
+Bruno Silva;Halo: Combat Evolved;2020-11-05
+Bruno Silva;Fable;2021-09-20
+Chloe Zhang;Super Mario 64;2019-12-10
+Chloe Zhang;The Legend of Zelda: Ocarina of Time;2020-07-03
+David Miller;God of War II;2021-04-25
+David Miller;Shadow of the Colossus;2022-02-14
+Elena Rossi;Uncharted: Drake's Fortune;2021-08-09
+Elena Rossi;LittleBigPlanet;2022-03-21
+Frank Dubois;Bloodborne;2020-10-17
+Frank Dubois;Horizon Zero Dawn;2021-05-30
+Gabriela Torres;Marvel's Spider-Man;2022-01-11
+Gabriela Torres;God of War;2022-06-25
+Hiroshi Tanaka;Super Smash Bros. Melee;2020-09-08
+Hiroshi Tanaka;Metroid Prime;2021-03-19
+Ingrid Müller;Resident Evil 4;2019-11-27
+Ingrid Müller;The Legend of Zelda: The Wind Waker;2020-05-14
+John Smith;Super Mario Galaxy;2021-12-02
+John Smith;Wii Sports;2022-07-16

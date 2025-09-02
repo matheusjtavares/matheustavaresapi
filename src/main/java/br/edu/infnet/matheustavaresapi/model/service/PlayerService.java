@@ -77,4 +77,12 @@ public class PlayerService implements CrudService<Player, Integer> {
         return playerRepository.save(player);
     }
 
+    public Player getByName(String playerName) {
+        Player player = playerRepository.findByName(playerName);
+        if (player == null){
+            throw new PlayerNotFoundException(playerName + " was not found in Players");
+        }
+        return player;
+    }
+
 }

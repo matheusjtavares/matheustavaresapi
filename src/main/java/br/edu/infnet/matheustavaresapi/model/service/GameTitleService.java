@@ -79,4 +79,12 @@ public class GameTitleService implements CrudService<GameTitle, Integer> {
     
         return gameTitleRepository.findByNameContaining(name);
     }
+
+    public GameTitle getByName(String gameTitleName) {
+        GameTitle gameTitle = gameTitleRepository.findByName(gameTitleName);
+        if (gameTitle == null){
+            throw new GameTitleNotFoundException(gameTitleName+ "was not found in Game Titles");
+        }
+        return gameTitle;
+    }
 }

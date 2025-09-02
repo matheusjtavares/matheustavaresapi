@@ -13,4 +13,5 @@ public interface GameTitleRepository extends JpaRepository<GameTitle, Integer>{
     List<GameTitle> findByNameStartingWith(String nameString);
     List<GameTitle> findByNameEndingWith(String nameString);
     List<GameTitle> findByPlatform(Platform platform);
+    GameTitle findByName(String name);
 }
